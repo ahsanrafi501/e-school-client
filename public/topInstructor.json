@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Daniel Lee",
+    "profilePic": "https://randomuser.me/api/portraits/men/20.jpg",
+    "rating": 4.9,
+    "studentsEnrolled": 19500,
+    "coursesCount": 5,
+    "specialty": "JavaScript & Frontend Development"
+  },
+  {
+    "id": 2,
+    "name": "Sophia Martinez",
+    "profilePic": "https://randomuser.me/api/portraits/women/50.jpg",
+    "rating": 4.9,
+    "studentsEnrolled": 9800,
+    "coursesCount": 4,
+    "specialty": "Data Science & Machine Learning"
+  },
+  {
+    "id": 3,
+    "name": "John Smith",
+    "profilePic": "https://randomuser.me/api/portraits/men/10.jpg",
+    "rating": 4.8,
+    "studentsEnrolled": 12000,
+    "coursesCount": 6,
+    "specialty": "Fullstack Web Development"
+  },
+  {
+    "id": 4,
+    "name": "Emily Carter",
+    "profilePic": "https://randomuser.me/api/portraits/women/15.jpg",
+    "rating": 4.7,
+    "studentsEnrolled": 15000,
+    "coursesCount": 3,
+    "specialty": "UI/UX Design"
+  }
+]
