@@ -3,10 +3,13 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import UseAuth from "../../Hook/UseAuth";
+import SocialLogin from "../../Component/socialLogin/socialLogin";
 
 const Register = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    console.log(location)
+
   const { registerUserWithEmail } = UseAuth();
   const {
     register,
@@ -26,7 +29,7 @@ const Register = () => {
           timer: 1500,
         });
         console.log(res);
-        navigate(location.state || '/');
+        navigate(location?.state || '/');
       })
       .catch((errors) => {
         Swal.fire({
@@ -115,10 +118,14 @@ const Register = () => {
             </fieldset>
             <p>
               Already have an account?{" "}
-              <Link to={"/login"} className="text-blue-600 underline">
+              <Link to={"/login"} state={location.state} className="text-blue-600 underline">
                 Login
               </Link>
             </p>
+            <div className="flex justify-center">
+              <SocialLogin></SocialLogin>
+            </div>
+            
           </form>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import UseAuth from '../../Hook/UseAuth';
 import registerImg from '../../assets/Group231.png'
 import { Link, useLocation, useNavigate } from 'react-router';
+import SocialLogin from '../../Component/socialLogin/socialLogin';
 
 const Login = () => {
      const { signInUserWithEmail } = UseAuth();
@@ -27,7 +28,7 @@ const Login = () => {
           timer: 1500,
         });
         console.log(res);
-        navigate(location.state || '/');
+        navigate(location?.state || '/');
       })
       .catch((errors) => {
         Swal.fire({
@@ -96,10 +97,13 @@ const Login = () => {
             </fieldset>
             <p>
               New to E-School?
-              <Link to={"/Register"} state={location.state} className="text-blue-600 underline">
+              <Link to={"/Register"} state={location?.state} className="text-blue-600 underline">
                 Register
               </Link>
             </p>
+            <div className='flex justify-center'>
+                <SocialLogin></SocialLogin>
+            </div>
           </form>
         </div>
       </div>
