@@ -5,6 +5,7 @@ import Register from "../Auth/Register/Register";
 import Login from "../Auth/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import AllCourses from "../Pages/AllCourses/AllCourses";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
         {
           path:'/login',
           Component: Login,
+        },
+        {
+          path:'/all-courses',
+          Component: AllCourses
         },
         {
           path:'/dashboard',

@@ -20,7 +20,7 @@ const PopularCards = ({ popularCardPromise }) => {
         ))}
       </div>
       <div className="flex justify-center">
-        <Link to={"/"} className="btn my-7">
+        <Link to={"/all-courses"} className="btn my-7">
           All Courses
         </Link>
       </div>
