@@ -6,34 +6,45 @@ import Login from "../Auth/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AllCourses from "../Pages/AllCourses/AllCourses";
+import AddCourse from "../Pages/AddCourse/AddCourse";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
     children: [
-        {
-            index: true,
-            Component: Home
-        },
-        {
-          path:'/register',
-          Component: Register,
-        },
-        {
-          path:'/login',
-          Component: Login,
-        },
-        {
-          path:'/all-courses',
-          Component: AllCourses
-        },
-        {
-          path:'/dashboard',
-          element:<PrivateRoute>
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path: "/login",
+        Component: Login,
+      },
+      {
+        path: "/all-courses",
+        Component: AllCourses,
+      },
+      {
+        path: "add-course",
+        element: (
+          <PrivateRoute>
+            <AddCourse></AddCourse>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
             <Dashboard></Dashboard>
           </PrivateRoute>
-        }
-    ]
+        ),
+      },
+    ],
   },
 ]);

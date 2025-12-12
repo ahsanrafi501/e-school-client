@@ -1,10 +1,23 @@
 
 import React, { use } from "react";
 import { motion } from "motion/react";
+import UseAuth from "../../../Hook/UseAuth";
+import { useQuery } from "@tanstack/react-query";
+import UseAxiosSecure from "../../../Hook/UseAxiosSecure";
 
 // You would typically pass the instructor data as props
-const TopInstructor = ({ instructorPromise }) => {
-  const instructorData = use(instructorPromise);
+const TopInstructor = () => {
+
+  const {user} = UseAuth();
+  const axiosSecure = UseAxiosSecure()
+  const {data: instructorData = []} = useQuery({
+    queryKey:['topInstructor', user],
+    queryFn: async () =>{
+      const res = await axiosSecure.get('/topInstructors')
+      return res.data;
+    }
+  })
+
   console.log(instructorData);
 
   return (
@@ -12,9 +25,9 @@ const TopInstructor = ({ instructorPromise }) => {
         <h2 className="text-5xl text-[#2F327D] font-bold text-center my-5">Top Instructor</h2>
 
 
-    <div className="grid grid-cols-1 place-items-center sm:grid-cols-4 gap-5">
-      {instructorData.map((data) => (
-        <motion.div whileHover={{ scale: 1.1 }} className="card w-72 bg-base-100 shadow-xl border border-gray-200">
+    <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {instructorData.sort((a,b) => (b.rating) - a.rating).map((data) => (
+        <motion.div whileHover={{ scale: 1.1 }} className="card w-72 bg-base-100 shadow-xl border border-gray-200 max-h-[360px]">
           <figure className="h-40 overflow-hidden">
             <img
               src={data.profilePic}
@@ -23,8 +36,8 @@ const TopInstructor = ({ instructorPromise }) => {
             />
           </figure>
 
-          <div className="card-body items-center text-center p-6">
-            <h2 className="text-2xl font-bold mb-1">{name}</h2>
+          <div className="card-body items-center text-center">
+            <h2 className="text-2xl font-bold mb-1">{data.name}</h2>
 
             <p className="text-lg text-gray-600 mb-4">{data.specialty}</p>
 

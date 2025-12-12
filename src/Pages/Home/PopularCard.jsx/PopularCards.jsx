@@ -17,7 +17,7 @@ const PopularCards = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto  my-7">
+    <div className="max-w-7xl place-items-center mx-auto  my-7">
       <div>
         <h2 className="text-5xl font-bold text-center my-7">Popular Courses</h2>
       </div>
