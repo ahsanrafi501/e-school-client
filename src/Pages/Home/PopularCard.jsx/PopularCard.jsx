@@ -1,12 +1,18 @@
 import React from "react";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router";
 
 const PopularCard = ({ d }) => {
   console.log(d);
+  const navigate = useNavigate()
+  const handleViewDetails = (id) => {
+    navigate(`/viewDetails/${id}`)
+  }
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
       className="card bg-base-100 w-96 shadow-sm"
+      onClick={() => handleViewDetails(d._id)}
     >
       <figure>
         <img src={d.thumbnail} alt="thumbnail" />
