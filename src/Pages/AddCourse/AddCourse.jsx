@@ -3,8 +3,17 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import UseAuth from "../../Hook/UseAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
+import UseAxiosSecure from "../../Hook/UseAxiosSecure";
 
 const AddCourse = () => {
+
+
+
+  const axiosSecure = UseAxiosSecure()
+
+
+
   const {
     register,
     formState: { errors },
@@ -14,8 +23,9 @@ const AddCourse = () => {
 
   const { user } = UseAuth();
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     console.log("Course Data:", data);
+    const result = await axiosSecure.post('/courses', data)
     Swal.fire({
       position: "middle",
       icon: "success",

@@ -24,7 +24,7 @@ const EditCourse = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await axiosSecure.get(`/courses/${id}`);
+        const res = await axiosSecure.get(`/course/${id}`);
         const courseData = res.data;
 
         // Split duration into hours and minutes for input fields
@@ -64,7 +64,7 @@ const EditCourse = () => {
     if (data.durationHours || data.durationMinutes) {
       updatedCourse.duration = `${data.durationHours || 0}h ${
         data.durationMinutes || 0
-      }m`;
+      }M`;
     }
     if (data.category) updatedCourse.category = data.category;
     if (data.description) updatedCourse.description = data.description;
@@ -76,8 +76,8 @@ const EditCourse = () => {
     }
 
     try {
-      const res = await axiosSecure.put(`/courses/${id}`, updatedCourse);
-      if (res.data._id) {
+      const res = await axiosSecure.patch(`/edit-course/${id}`, updatedCourse)
+      if (res.data) {
         Swal.fire({
           icon: "success",
           title: "Course Updated Successfully",

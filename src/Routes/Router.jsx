@@ -8,6 +8,8 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import AllCourses from "../Pages/AllCourses/AllCourses";
 import AddCourse from "../Pages/AddCourse/AddCourse";
 import ViewDetails from "../Pages/AllCourses/ViewDetails";
+import MyCourses from "../Pages/MyCourses/MyCourses";
+import EditCourse from "../Pages/EditCourse/EditCourse";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +53,18 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path:'/my-courses',
+        element:<PrivateRoute>
+          <MyCourses></MyCourses>
+        </PrivateRoute>
+      },
+      {
+        path:'/edit-course/:id',
+        element:<PrivateRoute>
+          <EditCourse></EditCourse>
+        </PrivateRoute>
+      }
     ],
   },
 ]);
