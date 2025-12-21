@@ -44,7 +44,7 @@ const Navbar = () => {
         <Link to={"/my-courses"}>My Course</Link>
       </li>
       <li>
-        <Link to={"/dashboard"}>Dashboard</Link>
+        <Link to={"/My-Enrolled-Courses"}>My Enrolled Courses</Link>
       </li>
     </>
   );
