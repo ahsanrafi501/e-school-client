@@ -10,11 +10,13 @@ import AddCourse from "../Pages/AddCourse/AddCourse";
 import ViewDetails from "../Pages/AllCourses/ViewDetails";
 import MyCourses from "../Pages/MyCourses/MyCourses";
 import EditCourse from "../Pages/EditCourse/EditCourse";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

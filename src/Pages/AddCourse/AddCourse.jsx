@@ -33,7 +33,7 @@ const onSubmit = async (data) => {
     if (res.data?.insertedId || res.data?.success) {
       Swal.fire({
         position: "center",
-        icon: "success",
+        icon: "success", 
         title: "Course Added",
         showConfirmButton: false,
         timer: 1500,
