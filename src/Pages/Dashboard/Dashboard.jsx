@@ -8,17 +8,17 @@ const MyEnrolledCourses = () => {
   const { user } = UseAuth();
   const axiosSecure = UseAxiosSecure();
 
-  // Fetch enrolled courses
-  const { data: enrolledCourses = [], isLoading } = useQuery({
-    queryKey: ["myEnrolledCourse", user?.email],
-    enabled: !!user?.email,
-    queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/my-enrolled-course?email=${user.email}`
-      );
-      return res.data;
-    },
-  });
+const { data: enrolledCourses = [], isLoading } = useQuery({
+  queryKey: ["myEnrolledCourse", user?.email],
+  queryFn: async () => {
+    const res = await axiosSecure.get(`/my-enrolled-course?email=${user.email}`, {
+      headers: { authorization: `Bearer ${user.accessToken}` },
+    });
+    return res.data;
+  },
+  enabled: !!user?.email,
+  refetchOnWindowFocus: true,
+});
 
   if (isLoading) return <p className="text-center mt-10">Loading...</p>;
 
