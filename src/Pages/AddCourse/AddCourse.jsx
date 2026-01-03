@@ -23,18 +23,34 @@ const AddCourse = () => {
 
   const { user } = UseAuth();
 
-  const onSubmit = async(data) => {
+const onSubmit = async (data) => {
+  try {
     console.log("Course Data:", data);
-    const result = await axiosSecure.post('/courses', data)
+
+    const res = await axiosSecure.post("/courses", data);
+
+    // optional: check backend response
+    if (res.data?.insertedId || res.data?.success) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Course Added",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      reset();
+    }
+  } catch (error) {
+    console.error("Error adding course:", error);
+
     Swal.fire({
-      position: "middle",
-      icon: "success",
-      title: "Course Added",
-      showConfirmButton: false,
-      timer: 1500,
+      icon: "error",
+      title: "Failed to add course",
+      text: error.response?.data?.message || "Something went wrong",
     });
-    reset();
-  };
+  }
+};
+
 
   return (
     <div className="min-h-screen pt-10 px-4 from-gray-100 to-gray-300">

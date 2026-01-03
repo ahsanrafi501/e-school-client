@@ -10,7 +10,11 @@ const AllCourses = () => {
   const { data = [] } = useQuery({
     queryKey: ["allcourses", user],
     queryFn: async () => {
-      const res = await axiosSecure.get("/courses");
+      const res = await axiosSecure.get("/courses", {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`
+        }
+      });
       return res.data;
     },
   });

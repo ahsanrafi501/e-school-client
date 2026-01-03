@@ -15,7 +15,11 @@ const PopularCard = ({ d }) => {
     queryKey: ["myEnrolledCourse", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/my-enrolled-course?email=${user.email}`);
+      const res = await axiosSecure.get(`/my-enrolled-course?email=${user.email}`, {
+        headers: {
+          authorization: `Brearer ${user.accessToken}`
+        }
+      });
       return res.data;
     },
   });

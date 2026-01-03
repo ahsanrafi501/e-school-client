@@ -19,7 +19,11 @@ const MyCourses = () => {
     queryKey: ["myCourses", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/my-courses?email=${user.email}`);
+      const res = await axiosSecure.get(`/my-courses?email=${user.email}`,{
+        headers: {
+          authorization: `Brearer ${user.accessToken}`
+        }
+      });
       return res.data;
     },
   });
